@@ -12,6 +12,8 @@ import breakingbad from '@/assets/breakingbad.asset.json';
 import bear from '@/assets/bear.asset.json';
 import arrival from '@/assets/arrival.asset.json';
 import dark from '@/assets/dark.asset.json';
+import interstellarBackdrop from '@/assets/interstellar-hero.asset.json';
+import batmanBackdrop from '@/assets/batman-hero.asset.json';
 
 type Seed = [number, string, string, 'movie' | 'tv', number, string[], string, string[], string, number];
 const seeds: Seed[] = [
@@ -31,10 +33,10 @@ const seeds: Seed[] = [
 
 export const catalog: MediaTitle[] = seeds.map(([tmdbId, title, poster, mediaType, rating, genres, overview, cast, releaseDate, length]) => ({
   id: `${mediaType}-${tmdbId}`, tmdbId, title, originalTitle: title, mediaType, rating, genres, overview, cast, releaseDate,
-  poster, backdrop: hero.url, posterPath: '', backdropPath: '/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg',
+  poster, backdrop: tmdbId === 693134 ? hero.url : tmdbId === 157336 ? interstellarBackdrop.url : tmdbId === 414906 ? batmanBackdrop.url : '', posterPath: '', backdropPath: tmdbId === 693134 ? '/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg' : tmdbId === 157336 ? '/xJHokMbljvjADYdit5fK5VQsXEG.jpg' : tmdbId === 414906 ? '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg' : '',
   ...(mediaType === 'movie' ? { runtime: length } : { seasons: length }),
   certification: mediaType === 'movie' ? 'PG-13' : 'TV-MA', externalIds: {}, source: 'demo',
-  director: tmdbId === 693134 || tmdbId === 335984 || tmdbId === 329865 ? 'Denis Villeneuve' : undefined,
+  ...(tmdbId === 693134 || tmdbId === 335984 || tmdbId === 329865 ? { director: 'Denis Villeneuve' } : {}),
 }));
 
 export function searchCatalog(query: string) {
