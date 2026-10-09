@@ -1,0 +1,11 @@
+import { useState } from 'react';
+import { Search, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { searchCatalog } from '@/data/catalog';
+import type { MediaTitle } from '@/services/metadata/types';
+export function SearchDialog({ open, onClose, onDetails }: { open: boolean; onClose: () => void; onDetails: (title: MediaTitle) => void }) {
+  const [query, setQuery] = useState('');
+  const results = searchCatalog(query);
+  return <Dialog open={open} onOpenChange={value => { if (!value) onClose(); }}><DialogContent className="max-h-[85dvh] max-w-2xl overflow-y-auto bg-card"><DialogTitle>Find your next story</DialogTitle><DialogDescription>Search the demo catalog</DialogDescription><div className="flex items-center gap-3 rounded-md border bg-background px-3"><Search className="h-5 w-5 shrink-0 text-muted-foreground" /><input autoFocus aria-label="Search movies, series, cast or genres" className="h-12 w-full min-w-0 bg-transparent text-sm outline-none" value={query} onChange={event => setQuery(event.target.value)} placeholder="Movies, series, cast, genres…" />{query && <Button variant="ghost" size="icon" onClick={() => setQuery('')} aria-label="Clear search"><X /></Button>}</div><p className="text-xs text-muted-foreground">{query ? `${results.length} results` : 'Popular searches'}</p><div className="grid gap-2 sm:grid-cols-2">{results.map(title => <Button key={title.id} variant="ghost" className="h-auto justify-start gap-3 whitespace-normal p-2 text-left" onClick={() => { onClose(); onDetails(title); }}><img src={title.poster} alt="" className="h-16 w-11 shrink-0 rounded object-cover" /><span className="min-w-0"><span className="block text-sm font-bold">{title.title}</span><span className="mt-1 block text-xs text-muted-foreground">{title.releaseDate.slice(0, 4)} · {title.mediaType === 'tv' ? 'Series' : 'Movie'}</span></span></Button>)}</div>{results.length === 0 && <div className="py-10 text-center"><p>No titles found</p><p className="mt-2 text-sm text-muted-foreground">Try another title, actor, or genre.</p></div>}</DialogContent></Dialog>;
+}
