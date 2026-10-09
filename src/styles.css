@@ -19,6 +19,8 @@
  */
 
 @theme inline {
+  --font-sans: 'Manrope', sans-serif;
+  --font-display: 'Oswald', sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -141,4 +143,73 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+:root, .dark {
+  --radius: 0.5rem;
+  --background: oklch(0.135 0.004 260);
+  --foreground: oklch(0.97 0.002 100);
+  --card: oklch(0.19 0.005 260);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.2 0.005 260);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.9 0.2 125);
+  --primary-foreground: oklch(0.15 0.02 125);
+  --secondary: oklch(0.98 0 0 / 12%);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.23 0.005 260);
+  --muted-foreground: oklch(0.68 0.01 260);
+  --accent: oklch(0.29 0.006 260);
+  --accent-foreground: var(--foreground);
+  --border: oklch(0.98 0 0 / 12%);
+  --input: var(--border);
+  --ring: var(--primary);
+  --hero-overlay: linear-gradient(90deg, oklch(0.1 0.004 260 / 93%) 0%, oklch(0.1 0.004 260 / 55%) 36%, oklch(0.1 0.004 260 / 8%) 72%);
+  --hero-fade: linear-gradient(0deg, var(--background) 0%, oklch(0.135 0.004 260 / 72%) 24%, transparent 100%);
+  --card-overlay: linear-gradient(0deg, oklch(0.1 0.004 260 / 98%), oklch(0.1 0.004 260 / 5%));
+  --shadow-cinematic: 0 16px 40px oklch(0 0 0 / 35%);
+  --duration-fast: 180ms;
+  --duration-cinematic: 600ms;
+  --ease-cinematic: cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font-sans); }
+* { letter-spacing: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.page-width { padding-inline: 4.6%; }
+.hero { position: relative; height: 700px; min-height: 630px; overflow: hidden; }
+.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; animation: artwork-in var(--duration-cinematic) var(--ease-cinematic); }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: var(--hero-overlay); }
+.hero::after { content: ''; position: absolute; inset: 40% 0 0; z-index: 1; background: var(--hero-fade); }
+.hero-copy { animation: copy-in var(--duration-cinematic) var(--ease-cinematic); }
+.hero-title { font-family: var(--font-display); font-size: 88px; line-height: 1.06; font-weight: 500; text-transform: uppercase; }
+.hero-subtitle { font-family: var(--font-display); font-size: 29px; font-weight: 400; margin-top: 5px; }
+.film-row { scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding-inline: 4.6%; }
+.film-row::-webkit-scrollbar { display: none; }
+.media-card { width: 182px; flex: 0 0 182px; scroll-snap-align: start; }
+.poster-wrap { aspect-ratio: 2 / 3; overflow: hidden; position: relative; border-radius: 6px; background: var(--muted); transition: transform var(--duration-fast), box-shadow var(--duration-fast); }
+.media-card:hover .poster-wrap, .media-card:focus-within .poster-wrap { transform: translateY(-5px); box-shadow: var(--shadow-cinematic); }
+.card-details { background: var(--card-overlay); opacity: 0; transition: opacity var(--duration-fast); }
+.media-card:hover .card-details, .media-card:focus-within .card-details { opacity: 1; }
+.featured-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-foreground); transition: width var(--duration-fast); }
+.featured-dot[data-active=true] { width: 25px; border-radius: 3px; background: var(--primary); }
+@keyframes artwork-in { from { opacity: .5; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+@keyframes copy-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (min-width: 1500px) { .hero { height: 760px; } .media-card { width: 215px; flex-basis: 215px; } }
+@media (max-width: 767px) {
+  .page-width { padding-inline: 6%; }
+  .hero { height: 660px; min-height: 660px; }
+  .hero-art { object-position: 63% center; }
+  .hero::before { background: linear-gradient(90deg, oklch(0.1 0.004 260 / 75%), oklch(0.1 0.004 260 / 30%)); }
+  .hero-title { font-size: 62px; }
+  .hero-subtitle { font-size: 23px; }
+  .hero-title { overflow-wrap: anywhere; }
+  .film-row { scroll-padding-inline: 6%; }
+  .media-card { width: 150px; flex-basis: 150px; }
+  .card-details { opacity: 1; background: transparent; }
+  .card-details .quick-info { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

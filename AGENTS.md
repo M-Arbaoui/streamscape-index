@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Use normalized media records behind a metadata service, separate from playback adapters; catalog identifiers do not establish playback availability.
+- Keep provider configuration and explicit identifier matching in the playback registry, and validate every embed URL against the adapter's HTTPS origin allowlist; presentation never constructs provider URLs.
+- Phase 1 uses a local demonstration catalog and session-only library state; no live metadata or playback is claimed before verified integrations exist.
+- Shared catalog navigation uses TanStack leaf routes and a reusable browsing view; title quick details and search use accessible dialogs.
