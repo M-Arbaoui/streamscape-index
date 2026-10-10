@@ -10,6 +10,8 @@ export interface PlaybackRequest {
 export interface PlaybackProvider {
   id: string;
   name: string;
+  badge?: string;
+  priority?: number;
   enabled: boolean;
   verified: boolean;
   mediaTypes: MediaType[];
