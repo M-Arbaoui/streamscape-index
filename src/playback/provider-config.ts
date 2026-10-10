@@ -16,7 +16,7 @@ const servers: { id: string; label: string; badge?: string }[] = [
 export const configuredProviders: PlaybackProvider[] = servers.map((server, index) => ({
   id: server.id,
   name: server.label,
-  badge: server.badge,
+  ...(server.badge ? { badge: server.badge } : {}),
   priority: index,
   enabled: false,
   verified: false,
