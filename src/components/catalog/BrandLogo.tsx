@@ -71,6 +71,7 @@ export function BrandLogo() {
       node.removeEventListener('pointercancel', reset);
       node.removeEventListener('focus', activate);
       node.removeEventListener('blur', reset);
+      reset();
     };
   }, [reducedMotion]);
 

@@ -219,7 +219,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .card-details .quick-info { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand-logo-body { transform: none !important; }
+  .brand-logo-body, .brand-flare-ray { transform: none !important; }
   .brand-logo-sweep { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
