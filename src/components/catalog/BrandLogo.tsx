@@ -48,10 +48,9 @@ export function BrandLogo() {
     shutter.set(48 + horizontal * 28); aperture.set(14 + (horizontal + 1) * 2);
   };
 
-  return <Link to="/" aria-label="CineStream home" className="brand-logo relative flex shrink-0 items-center py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background rounded-sm" onPointerEnter={track} onPointerMove={track} onPointerLeave={reset} onPointerCancel={reset} onBlur={reset} onFocus={() => { if (reducedMotion) return; light.set(1); shutter.set(48); aperture.set(16); scale.set(1.025); sweep.set(60); }}>
+  return <Link to="/" aria-label="Glint home" className="brand-logo relative flex shrink-0 items-center py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background rounded-sm" onPointerEnter={track} onPointerMove={track} onPointerLeave={reset} onPointerCancel={reset} onBlur={reset} onFocus={() => { if (reducedMotion) return; light.set(1); shutter.set(48); aperture.set(16); scale.set(1.025); sweep.set(60); }}>
     <motion.span className="brand-logo-body relative flex items-center gap-2.5" style={{ x: animatedX, y: animatedY, rotateX: animatedRotateX, rotateY: animatedRotateY, scale: animatedScale }}>
       <span aria-hidden="true" className="relative flex h-9 w-9 shrink-0 items-center justify-center">
-        <motion.span className="brand-logo-glow absolute -inset-3 rounded-full" style={{ opacity: animatedLight }} />
         <motion.svg className="relative h-8 w-8 text-primary" viewBox="0 0 32 32" fill="none" style={{ rotate: animatedShutter, scale: iconScale }}>
           <circle cx="16" cy="16" r="14.5" stroke="currentColor" strokeWidth="1.2" opacity="0.55" />
           {[0, 60, 120, 180, 240, 300].map(angle => <g key={angle} transform={`rotate(${angle} 16 16)`}>
@@ -60,7 +59,7 @@ export function BrandLogo() {
         </motion.svg>
         <svg className="absolute h-3 w-3 text-foreground" viewBox="0 0 12 12" fill="currentColor"><path d="M4 2.5 L9 6 L4 9.5 Z" /></svg>
       </span>
-      <span className="brand-wordmark relative text-[21px] font-extrabold sm:text-[23px]">CineStream<span className="text-primary">.</span>
+      <span className="brand-wordmark relative text-[21px] font-extrabold sm:text-[23px]">Glint<span className="text-primary">.</span>
         <span aria-hidden="true" className="pointer-events-none absolute -inset-2 overflow-hidden"><motion.span className="brand-logo-sweep absolute inset-y-0 w-10" style={{ left: sweepPosition, opacity: animatedLight }} /></span>
       </span>
     </motion.span>
