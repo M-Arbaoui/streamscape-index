@@ -37,6 +37,7 @@ export function BrandLogo() {
   };
 
   const track = (event: PointerEvent<HTMLAnchorElement>) => {
+    console.log('[brand] track fired', event.pointerType, 'reducedMotion=', reducedMotion);
     if (reducedMotion || event.pointerType === 'touch') return;
     const rect = bounds.current ?? event.currentTarget.getBoundingClientRect();
     bounds.current = rect;
