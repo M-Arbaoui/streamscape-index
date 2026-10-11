@@ -172,9 +172,8 @@
   --duration-cinematic: 600ms;
   --ease-cinematic: cubic-bezier(0.2, 0.65, 0.3, 1);
   --brand-light: oklch(0.86 0.13 205);
-  --brand-reflection: linear-gradient(105deg, transparent, oklch(0.86 0.13 205 / 12%) 25%, oklch(0.98 0.02 205 / 70%) 50%, oklch(0.86 0.13 205 / 12%) 75%, transparent);
-  --brand-shadow: 0 0 16px oklch(0.86 0.13 205 / 24%);
-  --brand-beam: linear-gradient(90deg, transparent, oklch(0.97 0.035 205 / 60%), transparent);
+  --brand-reflection: linear-gradient(105deg, transparent 35%, oklch(0.98 0.02 205 / 85%) 50%, transparent 65%);
+  --brand-beam: linear-gradient(90deg, transparent, oklch(0.99 0.015 205), transparent);
 }
 
 html { scroll-behavior: smooth; }
@@ -184,9 +183,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-width { padding-inline: 4.6%; }
 .brand-logo { perspective: 500px; }
 .brand-logo-body { transform-style: preserve-3d; }
-.brand-logo-sweep { background: var(--brand-reflection); transform: skewX(-18deg); filter: blur(2px); box-shadow: var(--brand-shadow); }
-.brand-logo-sweep::after { content: ''; position: absolute; height: 2px; width: 90px; left: -25px; top: 50%; background: var(--brand-beam); }
-.brand-logo:focus-visible .brand-logo-body { filter: drop-shadow(var(--brand-shadow)); }
+.brand-flare { color: var(--brand-light); }
+.brand-logo-sweep { background: var(--brand-reflection); transform: skewX(-18deg); }
+.brand-logo-sweep::after { content: ''; position: absolute; height: 1px; width: 70px; left: -25px; top: 50%; background: var(--brand-beam); }
 .hero { position: relative; height: 700px; min-height: 630px; overflow: hidden; }
 .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; animation: artwork-in var(--duration-cinematic) var(--ease-cinematic); }
 .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: var(--hero-overlay); }
