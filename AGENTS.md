@@ -14,4 +14,4 @@
 - Keep provider configuration and explicit identifier matching in the playback registry, and validate every embed URL against the adapter's HTTPS origin allowlist; presentation never constructs provider URLs.
 - Phase 1 uses a local demonstration catalog and session-only library state; no live metadata or playback is claimed before verified integrations exist.
 - Shared catalog navigation uses TanStack leaf routes and a reusable browsing view; title quick details and search use accessible dialogs.
-- Keep header brand motion isolated in BrandLogo with Framer Motion spring values and reduced-motion guards, so pointer tracking does not re-render navigation.
+- Keep header brand motion isolated in BrandLogo with Framer Motion spring values and reduced-motion guards, so pointer tracking does not re-render navigation; bind the cursor tracking with native listeners on the anchor ref because React's delegated pointer events never reach that element in this SSR app.
