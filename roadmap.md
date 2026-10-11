@@ -3,5 +3,6 @@
 - [x] Navigation, search, interactive cards, and session watchlist actions.
 - [x] Normalized metadata model and separate provider registry foundation.
 - [x] Verify interactions and document Phase 1 boundaries.
+- [x] Name the product Glint. and keep the logo transition free of any background.
 
 Later phases: live TMDB metadata, dedicated title/episode pages, verified player integrations, and durable library/progress persistence.
