@@ -171,9 +171,13 @@
   --duration-fast: 180ms;
   --duration-cinematic: 600ms;
   --ease-cinematic: cubic-bezier(0.2, 0.65, 0.3, 1);
-  --brand-light: oklch(0.86 0.13 205);
-  --brand-reflection: linear-gradient(105deg, transparent 35%, oklch(0.98 0.02 205 / 85%) 50%, transparent 65%);
-  --brand-beam: linear-gradient(90deg, transparent, oklch(0.99 0.015 205), transparent);
+  --brand-ivory: oklch(0.955 0.018 92);
+  --brand-ivory-bright: oklch(0.985 0.014 92);
+  --brand-gold: oklch(0.72 0.095 86);
+  --brand-gold-bright: oklch(0.81 0.115 84);
+  --brand-gold-glow: radial-gradient(closest-side, oklch(0.82 0.11 84 / 30%), oklch(0.82 0.11 84 / 0%));
+  --font-brand: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --duration-brand: 300ms;
 }
 
 html { scroll-behavior: smooth; }
@@ -181,11 +185,12 @@ body { margin: 0; font-family: var(--font-sans); }
 * { letter-spacing: 0; }
 button, a { -webkit-tap-highlight-color: transparent; }
 .page-width { padding-inline: 4.6%; }
-.brand-logo { perspective: 500px; }
-.brand-logo-body { transform-style: preserve-3d; }
-.brand-flare { color: var(--brand-light); }
-.brand-logo-sweep { background: var(--brand-reflection); transform: skewX(-18deg); }
-.brand-logo-sweep::after { content: ''; position: absolute; height: 1px; width: 70px; left: -25px; top: 50%; background: var(--brand-beam); }
+.brand-wordmark { font-family: var(--font-brand); font-weight: 500; font-size: 23px; letter-spacing: 0.02em; color: var(--brand-ivory); transition: color var(--duration-brand) ease-out; }
+.brand-logo:hover .brand-wordmark, .brand-logo:focus-visible .brand-wordmark { color: var(--brand-ivory-bright); }
+.logo-dot { position: relative; color: var(--brand-gold); transition: color var(--duration-brand) ease-out; }
+.logo-dot::after { content: ''; position: absolute; left: 50%; top: 52%; width: 26px; height: 26px; border-radius: 9999px; transform: translate(-50%, -50%); background: var(--brand-gold-glow); opacity: 0; transition: opacity var(--duration-brand) ease-out; pointer-events: none; }
+.brand-logo:hover .logo-dot, .brand-logo:focus-visible .logo-dot { color: var(--brand-gold-bright); }
+.brand-logo:hover .logo-dot::after, .brand-logo:focus-visible .logo-dot::after { opacity: 1; }
 .hero { position: relative; height: 700px; min-height: 630px; overflow: hidden; }
 .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; animation: artwork-in var(--duration-cinematic) var(--ease-cinematic); }
 .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: var(--hero-overlay); }
@@ -219,7 +224,5 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .card-details .quick-info { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand-logo-body, .brand-flare-ray { transform: none !important; }
-  .brand-logo-sweep { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
