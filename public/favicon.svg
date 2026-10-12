@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Glint. Diamond Flare Spark — simplified mark -->
+  <g>
+    <path d="M2 32 L28 26.5 L62 32 L28 37.5 Z" fill="#4AE9F9"/>
+    <path d="M32 3 L37.5 28 L32 61 L26.5 28 Z" fill="#4AE9F9"/>
+    <path d="M32 25.5 L34 30 L38.5 32 L34 34 L32 38.5 L30 34 L25.5 32 L30 30 Z" fill="#EAFDFF"/>
+  </g>
+</svg>
