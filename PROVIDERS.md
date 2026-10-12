@@ -1,7 +1,7 @@
 # Metadata and playback foundation
 
 ## Phase 1
-Glint uses a curated local demonstration catalog, illustrative ratings and artwork from TMDB. It does not make live TMDB requests, offer full-length playback, or track playback progress. My List is session-only. No authentication or database is implemented.
+Watchy uses a curated local demonstration catalog, illustrative ratings and artwork from TMDB. It does not make live TMDB requests, offer full-length playback, or track playback progress. My List is session-only. No authentication or database is implemented.
 
 ## Metadata
 `MediaTitle` normalizes internal and TMDB identifiers, optional IMDb IDs, external mappings, artwork, cast and movie/series facts. `MetadataService` isolates browsing and search from the data source. The next metadata phase should implement documented TMDB endpoints behind a secret-safe server boundary, handle rate limits and cache responses, with required attribution. TVmaze and Wikidata can supplement explicitly matched records. Artwork availability does not establish redistribution rights; confirm usage terms before production.
