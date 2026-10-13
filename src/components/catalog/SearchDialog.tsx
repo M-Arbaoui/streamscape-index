@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { Button } from '@/components/ui/button';
 import { searchCatalog } from '@/data/catalog';
 import type { MediaTitle } from '@/services/metadata/types';
+import { CinematicImage } from './CinematicImage';
 export function SearchDialog({ open, onClose, onDetails }: { open: boolean; onClose: () => void; onDetails: (title: MediaTitle) => void }) {
   const [query, setQuery] = useState('');
   const results = searchCatalog(query);

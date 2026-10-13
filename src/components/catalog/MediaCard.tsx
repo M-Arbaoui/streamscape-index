@@ -2,6 +2,7 @@ import { Plus, Check, Star, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { MediaTitle } from '@/services/metadata/types';
 import { useLibrary } from './LibraryContext';
+import { CinematicImage } from './CinematicImage';
 
 export function MediaCard({ title, onDetails, rank }: { title: MediaTitle; onDetails: (title: MediaTitle) => void; rank?: number }) {
   const { saved, toggle } = useLibrary();
@@ -9,7 +10,7 @@ export function MediaCard({ title, onDetails, rank }: { title: MediaTitle; onDet
   return <article className="media-card group min-w-0">
     <div className="poster-wrap">
       <Button variant="ghost" className="absolute inset-0 h-full w-full rounded-none p-0 hover:bg-transparent" onClick={() => onDetails(title)} aria-label={`Details for ${title.title}`}>
-        <img src={title.poster} alt={`${title.title} poster`} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" onError={event => { event.currentTarget.style.visibility = 'hidden'; }} />
+        <CinematicImage src={title.poster} alt={`${title.title} poster`} loading="lazy" frameClassName="h-full w-full" className="transition-transform duration-500 group-hover:scale-[1.025]" />
       </Button>
       {rank && <span className="pointer-events-none absolute left-3 top-3 rounded border border-primary/30 bg-background/75 px-2 py-1 text-[10px] font-extrabold text-primary backdrop-blur-md">TOP {rank < 10 ? `0${rank}` : rank}</span>}
       <div className="card-details pointer-events-none absolute inset-0 flex flex-col justify-end p-3">

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { catalog } from '@/data/catalog';
 import type { MediaTitle } from '@/services/metadata/types';
 import { useLibrary } from './LibraryContext';
+import { CinematicImage } from './CinematicImage';
 import duneArt from '@/assets/dune-hero.asset.json';
 import interstellarArt from '@/assets/interstellar-hero.asset.json';
 import batmanArt from '@/assets/batman-hero.asset.json';
@@ -16,7 +17,7 @@ export function Hero({ onDetails, onPlay }: { onDetails: (title: MediaTitle) => 
   if (!feature?.title) return null;
   const title = feature.title;
   return <section className="hero">
-    <img key={feature.artwork} src={feature.artwork} alt={`${title.title} cinematic backdrop`} className="hero-art" fetchPriority="high" />
+    <CinematicImage src={feature.artwork} alt={`${title.title} cinematic backdrop`} frameClassName="hero-art" className="hero-artwork" fetchPriority="high" />
     <div key={title.id} className="hero-copy page-width absolute inset-x-0 top-[145px] z-10 sm:top-[185px]">
       <div className="mb-6 flex items-center gap-2 text-[10px] font-bold uppercase"><span className="h-1.5 w-1.5 rounded-full bg-primary" /><span className="text-primary">In the spotlight</span><span className="ml-2 rounded border border-foreground/20 px-2 py-0.5 text-[9px]">MOVIE</span><span className="rounded border border-foreground/20 px-2 py-0.5 text-[9px]">DEMO CATALOG</span></div>
       <h1 className="hero-title max-w-xl">{active === 0 ? 'Dune' : title.title}</h1>{active === 0 && <p className="hero-subtitle">PART TWO</p>}

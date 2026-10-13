@@ -6,6 +6,7 @@ import type { MediaTitle } from '@/services/metadata/types';
 import { providerRegistry } from '@/playback/provider-registry';
 import { useLibrary } from './LibraryContext';
 import { ServerHub } from './ServerHub';
+import { CinematicImage } from './CinematicImage';
 
 export function TitleDialog({ title, onClose, initialPlayback = false }: { title: MediaTitle | null; onClose: () => void; initialPlayback?: boolean }) {
   const { saved, toggle } = useLibrary();
