@@ -11,7 +11,7 @@ export function MediaCard({ title, onDetails, rank }: { title: MediaTitle; onDet
       <Button variant="ghost" className="absolute inset-0 h-full w-full rounded-none p-0 hover:bg-transparent" onClick={() => onDetails(title)} aria-label={`Details for ${title.title}`}>
         <img src={title.poster} alt={`${title.title} poster`} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" onError={event => { event.currentTarget.style.visibility = 'hidden'; }} />
       </Button>
-      {rank && <span className="pointer-events-none absolute left-3 top-3 rounded bg-background/75 px-2 py-1 text-[10px] font-extrabold backdrop-blur-md"><span className="text-primary">TOP</span> {rank < 10 ? `0${rank}` : rank}</span>}
+      {rank && <span className="pointer-events-none absolute left-3 top-3 rounded border border-primary/30 bg-background/75 px-2 py-1 text-[10px] font-extrabold text-primary backdrop-blur-md">TOP {rank < 10 ? `0${rank}` : rank}</span>}
       <div className="card-details pointer-events-none absolute inset-0 flex flex-col justify-end p-3">
         <div className="quick-info mb-2"><p className="text-xs font-semibold">{title.genres.slice(0, 2).join(' · ')}</p><p className="mt-1 line-clamp-3 text-[11px] leading-relaxed text-foreground/75">{title.overview}</p></div>
         <div className="pointer-events-auto flex justify-between">

@@ -15,3 +15,4 @@
 - Phase 1 uses a local demonstration catalog and session-only library state; no live metadata or playback is claimed before verified integrations exist.
 - Shared catalog navigation uses TanStack leaf routes and a reusable browsing view; title quick details and search use accessible dialogs.
 - The header logo is a pure-CSS serif wordmark in BrandLogo ("Watchy" plus an inline gold period): hover and keyboard focus only shift colors and fade the period's glow via CSS transitions — no JavaScript animation, no icons, and no layout-affecting properties.
+- Theme surfaces, lighting, and button finishes use shared semantic CSS tokens and Button variants so catalog views and playback controls stay visually consistent.
