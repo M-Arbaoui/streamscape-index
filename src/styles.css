@@ -175,6 +175,9 @@
   --surface-sheen: linear-gradient(135deg, oklch(0.95 0.018 92 / 5%), transparent 65%);
   --duration-fast: 180ms;
   --duration-cinematic: 600ms;
+  --duration-reveal: 320ms;
+  --loading-sheen: linear-gradient(100deg, transparent 25%, oklch(0.81 0.085 86 / 9%) 50%, transparent 75%);
+  --loading-track: linear-gradient(90deg, transparent, var(--primary), transparent);
   --ease-cinematic: cubic-bezier(0.2, 0.65, 0.3, 1);
   --brand-ivory: oklch(0.955 0.018 92);
   --brand-ivory-bright: oklch(0.985 0.014 92);
@@ -197,7 +200,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .brand-logo:hover .logo-dot, .brand-logo:focus-visible .logo-dot { color: var(--brand-gold-bright); }
 .brand-logo:hover .logo-dot::after, .brand-logo:focus-visible .logo-dot::after { opacity: 1; }
 .hero { position: relative; height: 700px; min-height: 630px; overflow: hidden; }
-.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; animation: artwork-in var(--duration-cinematic) var(--ease-cinematic); }
+.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-artwork { object-position: center 35%; }
 .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: var(--hero-light), var(--hero-overlay); }
 .hero::after { content: ''; position: absolute; inset: 40% 0 0; z-index: 1; background: var(--hero-fade); }
 .hero-copy { animation: copy-in var(--duration-cinematic) var(--ease-cinematic); }
@@ -215,15 +219,24 @@ main h1:not(.hero-title), main h2, [data-slot="dialog-title"] { font-family: var
 .card-details { background: var(--card-overlay); opacity: 0; transition: opacity 300ms ease-out; }
 .quick-info { border-top: 1px solid var(--border); padding-top: 10px; backdrop-filter: blur(4px); }
 .media-card:hover .card-details, .media-card:focus-within .card-details { opacity: 1; }
-.featured-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted-foreground); transition: width var(--duration-fast); }
-.featured-dot[data-active=true] { width: 25px; border-radius: 3px; background: var(--primary); }
-@keyframes artwork-in { from { opacity: .5; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+.featured-dot { width: 25px; height: 6px; border-radius: 3px; background: var(--muted-foreground); transform: scaleX(.24); transition: transform var(--duration-reveal) var(--ease-cinematic), background-color var(--duration-reveal) ease-out; }
+.featured-dot[data-active=true] { transform: scaleX(1); background: var(--primary); }
+.cinematic-image-content { opacity: 0; transition: opacity var(--duration-reveal) ease-out, transform var(--duration-cinematic) var(--ease-cinematic); }
+.cinematic-image[data-image-state=ready] .cinematic-image-content { opacity: 1; }
+.cinematic-skeleton { background-color: var(--muted); background-image: var(--loading-sheen); background-size: 250% 100%; animation: champagne-shimmer 2.2s ease-in-out infinite; }
+.navigation-loading { overflow: hidden; background: var(--border); }
+.navigation-loading::after { content: ''; display: block; width: 40%; height: 100%; background: var(--loading-track); animation: navigation-progress 1.6s ease-in-out infinite; }
+.catalog-transition { animation: cinematic-reveal var(--duration-reveal) ease-out; }
+.cinematic-dialog[data-state=open], .cinematic-dialog[data-state=closed], .cinematic-dialog-overlay[data-state=open], .cinematic-dialog-overlay[data-state=closed] { animation-duration: var(--duration-reveal); animation-timing-function: var(--ease-cinematic); }
+@keyframes champagne-shimmer { from { background-position: 150% 0; } to { background-position: -150% 0; } }
+@keyframes navigation-progress { from { transform: translateX(-100%); } to { transform: translateX(350%); } }
+@keyframes cinematic-reveal { from { opacity: .65; } to { opacity: 1; } }
 @keyframes copy-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @media (min-width: 1500px) { .hero { height: 760px; } .media-card { width: 215px; flex-basis: 215px; } }
 @media (max-width: 767px) {
   .page-width { padding-inline: 6%; }
   .hero { height: 660px; min-height: 660px; }
-  .hero-art { object-position: 63% center; }
+  .hero-artwork { object-position: 63% center; }
   .hero::before { background: var(--hero-light), var(--hero-overlay-mobile); }
   .hero-title { font-size: 52px; }
   .hero-subtitle { font-size: 14px; }
