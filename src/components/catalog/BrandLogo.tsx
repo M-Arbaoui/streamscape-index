@@ -26,7 +26,7 @@ export function BrandLogo() {
       frame = requestAnimationFrame(() => {
         wordmark.style.setProperty('--spotlight-x', `${x}px`);
         wordmark.style.setProperty('--spotlight-y', `${y}px`);
-        logo.dataset.spotlight = 'active';
+        logo.dataset['spotlight'] = 'active';
         frame = undefined;
       });
     };
