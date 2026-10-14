@@ -184,6 +184,7 @@
   --brand-gold: oklch(0.72 0.095 86);
   --brand-gold-bright: oklch(0.81 0.115 84);
   --brand-gold-glow: radial-gradient(closest-side, oklch(0.82 0.11 84 / 30%), oklch(0.82 0.11 84 / 0%));
+  --brand-spotlight: radial-gradient(ellipse 34px 26px at var(--spotlight-x, 50%) var(--spotlight-y, 50%), oklch(0.94 0.075 86 / 95%) 0%, oklch(0.87 0.09 86 / 55%) 38%, transparent 100%);
   --font-brand: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --duration-brand: 300ms;
 }
@@ -195,6 +196,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-width { padding-inline: 4.6%; }
 .brand-wordmark { font-family: var(--font-brand); font-weight: 500; font-size: 23px; letter-spacing: 0.02em; color: var(--brand-ivory); transition: color var(--duration-brand) ease-out; }
 .brand-logo:hover .brand-wordmark, .brand-logo:focus-visible .brand-wordmark { color: var(--brand-ivory-bright); }
+.brand-wordmark::after { content: attr(data-wordmark); position: absolute; inset: 0; background-image: var(--brand-spotlight); background-clip: text; -webkit-background-clip: text; color: transparent; opacity: 0; pointer-events: none; transition: opacity var(--duration-brand) ease-out; }
+.brand-logo[data-spotlight=active] .brand-wordmark::after, .brand-logo:focus-visible .brand-wordmark::after { opacity: 1; }
+.brand-logo:focus-visible .brand-wordmark { --spotlight-x: 50% !important; --spotlight-y: 50% !important; }
 .logo-dot { position: relative; color: var(--brand-gold); transition: color var(--duration-brand) ease-out; }
 .logo-dot::after { content: ''; position: absolute; left: 50%; top: 52%; width: 26px; height: 26px; border-radius: 9999px; transform: translate(-50%, -50%); background: var(--brand-gold-glow); opacity: 0; transition: opacity var(--duration-brand) ease-out; pointer-events: none; }
 .brand-logo:hover .logo-dot, .brand-logo:focus-visible .logo-dot { color: var(--brand-gold-bright); }
@@ -247,5 +251,6 @@ main h1:not(.hero-title), main h2, [data-slot="dialog-title"] { font-family: var
   .card-details .quick-info { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .brand-wordmark::after { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

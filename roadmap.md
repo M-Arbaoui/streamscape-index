@@ -6,5 +6,6 @@
 - [x] Rename the product to Watchy. with the serif ivory wordmark and gold period glow hover.
 - [x] Apply and verify the Midnight & Champagne theme across the catalog, cards, and controls.
 - [x] Add and verify restrained transitions and real artwork/navigation loading states.
+- [x] Add and verify a restrained gold cursor spotlight across the stationary Watchy wordmark.
 
 Later phases: live TMDB metadata, dedicated title/episode pages, verified player integrations, and durable library/progress persistence.
