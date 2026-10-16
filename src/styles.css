@@ -147,45 +147,44 @@
 
 :root, .dark {
   --radius: 0.5rem;
-  --background: oklch(0.125 0.003 285);
-  --foreground: oklch(0.955 0.018 92);
-  --card: oklch(0.205 0.006 80 / 88%);
+  --background: oklch(0.105 0.018 285);
+  --foreground: oklch(0.955 0.012 260);
+  --card: oklch(0.2 0.03 285 / 82%);
   --card-foreground: var(--foreground);
-  --popover: oklch(0.205 0.006 80 / 97%);
+  --popover: oklch(0.2 0.03 285 / 96%);
   --popover-foreground: var(--foreground);
-  --primary: oklch(0.81 0.085 86);
-  --primary-foreground: oklch(0.18 0.012 80);
-  --secondary: oklch(0.86 0.035 86 / 10%);
+  --primary: oklch(0.74 0.15 300);
+  --primary-foreground: oklch(0.14 0.02 285);
+  --secondary: oklch(0.8 0.1 260 / 10%);
   --secondary-foreground: var(--foreground);
-  --muted: oklch(0.235 0.006 80);
-  --muted-foreground: oklch(0.71 0.016 85);
-  --accent: oklch(0.81 0.085 86 / 16%);
+  --muted: oklch(0.23 0.03 285);
+  --muted-foreground: oklch(0.72 0.03 265);
+  --accent: oklch(0.74 0.15 300 / 16%);
   --accent-foreground: var(--foreground);
-  --border: oklch(0.87 0.035 86 / 14%);
+  --border: oklch(0.85 0.06 280 / 14%);
   --input: var(--border);
-  --ring: var(--primary);
-  --hero-overlay: linear-gradient(90deg, oklch(0.1 0.003 285 / 96%) 0%, oklch(0.1 0.003 285 / 62%) 36%, oklch(0.1 0.003 285 / 8%) 72%);
-  --hero-fade: linear-gradient(0deg, var(--background) 0%, oklch(0.125 0.003 285 / 78%) 24%, transparent 100%);
-  --hero-light: linear-gradient(115deg, oklch(0.75 0.09 80 / 9%) 0%, transparent 48%, oklch(0.78 0.06 86 / 6%) 100%);
-  --hero-overlay-mobile: linear-gradient(90deg, oklch(0.1 0.003 285 / 85%), oklch(0.1 0.003 285 / 35%));
-  --card-overlay: linear-gradient(0deg, oklch(0.12 0.005 80 / 97%), oklch(0.12 0.005 80 / 4%) 85%);
-  --shadow-cinematic: 0 18px 36px -10px oklch(0 0 0 / 65%), 0 0 0 1px oklch(0.81 0.085 86 / 30%);
-  --shadow-champagne: 0 4px 18px -5px oklch(0.81 0.085 86 / 24%);
-  --button-champagne: linear-gradient(135deg, oklch(0.87 0.07 88), var(--primary));
-  --surface-sheen: linear-gradient(135deg, oklch(0.95 0.018 92 / 5%), transparent 65%);
+  --ring: oklch(0.85 0.13 200);
+  --hero-overlay: linear-gradient(90deg, oklch(0.08 0.015 285 / 96%) 0%, oklch(0.08 0.015 285 / 62%) 36%, oklch(0.08 0.015 285 / 8%) 72%);
+  --hero-fade: linear-gradient(0deg, var(--background) 0%, oklch(0.105 0.018 285 / 78%) 24%, transparent 100%);
+  --hero-light: linear-gradient(115deg, oklch(0.74 0.15 300 / 12%) 0%, transparent 48%, oklch(0.85 0.13 200 / 9%) 100%);
+  --hero-overlay-mobile: linear-gradient(90deg, oklch(0.08 0.015 285 / 85%), oklch(0.08 0.015 285 / 35%));
+  --card-overlay: linear-gradient(0deg, oklch(0.1 0.02 285 / 97%), oklch(0.1 0.02 285 / 4%) 85%);
+  --shadow-cinematic: 0 18px 36px -10px oklch(0 0 0 / 65%), 0 0 0 1px oklch(0.74 0.15 300 / 30%), 0 0 28px -6px oklch(0.74 0.15 300 / 22%);
+  --shadow-champagne: 0 4px 18px -5px oklch(0.74 0.15 300 / 30%), 0 0 22px -6px oklch(0.85 0.13 200 / 22%);
+  --button-champagne: linear-gradient(135deg, oklch(0.78 0.16 300), oklch(0.72 0.13 230) 55%, oklch(0.85 0.13 200));
+  --surface-sheen: linear-gradient(135deg, oklch(0.95 0.02 280 / 6%), transparent 65%);
   --duration-fast: 180ms;
   --duration-cinematic: 600ms;
   --duration-reveal: 320ms;
-  --loading-sheen: linear-gradient(100deg, transparent 25%, oklch(0.81 0.085 86 / 9%) 50%, transparent 75%);
-  --loading-track: linear-gradient(90deg, transparent, var(--primary), transparent);
+  --loading-sheen: linear-gradient(100deg, transparent 25%, oklch(0.74 0.15 300 / 10%) 42%, oklch(0.85 0.13 200 / 10%) 58%, transparent 75%);
+  --loading-track: linear-gradient(90deg, transparent, oklch(0.74 0.15 300), oklch(0.85 0.13 200), transparent);
   --ease-cinematic: cubic-bezier(0.2, 0.65, 0.3, 1);
-  --brand-ivory: oklch(0.955 0.018 92);
-  --brand-ivory-bright: oklch(0.985 0.014 92);
-  --brand-gold: oklch(0.72 0.095 86);
-  --brand-gold-bright: oklch(0.81 0.115 84);
-  --brand-gold-glow: radial-gradient(closest-side, oklch(0.82 0.11 84 / 30%), oklch(0.82 0.11 84 / 0%));
-  --brand-spotlight: radial-gradient(ellipse 34px 26px at var(--spotlight-x, 50%) var(--spotlight-y, 50%), oklch(0.94 0.075 86 / 95%) 0%, oklch(0.87 0.09 86 / 55%) 38%, transparent 100%);
-  --font-brand: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --aura-violet: oklch(0.74 0.16 300);
+  --aura-cyan: oklch(0.85 0.13 200);
+  --aura-gradient: linear-gradient(120deg, var(--aura-violet), var(--aura-cyan));
+  --aura-glow: radial-gradient(closest-side, oklch(0.74 0.16 300 / 34%), oklch(0.85 0.13 200 / 12%) 60%, transparent 100%);
+  --brand-spotlight: radial-gradient(ellipse 40px 30px at var(--spotlight-x, 50%) var(--spotlight-y, 50%), oklch(0.9 0.1 210 / 95%) 0%, oklch(0.8 0.14 290 / 55%) 42%, transparent 100%);
+  --font-brand: 'Space Grotesk', 'Manrope', sans-serif;
   --duration-brand: 300ms;
 }
 
@@ -194,15 +193,17 @@ body { margin: 0; font-family: var(--font-sans); }
 * { letter-spacing: 0; }
 button, a { -webkit-tap-highlight-color: transparent; }
 .page-width { padding-inline: 4.6%; }
-.brand-wordmark { font-family: var(--font-brand); font-weight: 500; font-size: 23px; letter-spacing: 0.02em; color: var(--brand-ivory); transition: color var(--duration-brand) ease-out; }
-.brand-logo:hover .brand-wordmark, .brand-logo:focus-visible .brand-wordmark { color: var(--brand-ivory-bright); }
+.brand-wordmark { font-family: var(--font-brand); font-weight: 500; font-size: 23px; letter-spacing: 0.04em; color: var(--foreground); transition: color var(--duration-brand) ease-out; }
+.brand-logo:hover .brand-wordmark, .brand-logo:focus-visible .brand-wordmark { color: oklch(0.98 0.01 260); }
 .brand-wordmark::after { content: attr(data-wordmark); position: absolute; inset: 0; background-image: var(--brand-spotlight); background-clip: text; -webkit-background-clip: text; color: transparent; opacity: 0; pointer-events: none; transition: opacity var(--duration-brand) ease-out; }
 .brand-logo[data-spotlight=active] .brand-wordmark::after, .brand-logo:focus-visible .brand-wordmark::after { opacity: 1; }
-.brand-logo:focus-visible .brand-wordmark { --spotlight-x: 50% !important; --spotlight-y: 50% !important; }
-.logo-dot { position: relative; color: var(--brand-gold); transition: color var(--duration-brand) ease-out; }
-.logo-dot::after { content: ''; position: absolute; left: 50%; top: 52%; width: 26px; height: 26px; border-radius: 9999px; transform: translate(-50%, -50%); background: var(--brand-gold-glow); opacity: 0; transition: opacity var(--duration-brand) ease-out; pointer-events: none; }
-.brand-logo:hover .logo-dot, .brand-logo:focus-visible .logo-dot { color: var(--brand-gold-bright); }
-.brand-logo:hover .logo-dot::after, .brand-logo:focus-visible .logo-dot::after { opacity: 1; }
+.brand-logo:focus-visible .brand-wordmark, .brand-logo:focus-visible .brand-mark { --spotlight-x: 50% !important; --spotlight-y: 50% !important; }
+.brand-mark { position: relative; width: 26px; height: 26px; flex: none; }
+.brand-mark svg { position: relative; z-index: 1; display: block; width: 100%; height: 100%; }
+.brand-mark::before { content: ''; position: absolute; inset: -14px; border-radius: 9999px; background: var(--aura-glow); opacity: 0.35; transition: opacity var(--duration-brand) ease-out; pointer-events: none; }
+.brand-mark::after { content: ''; position: absolute; inset: -10px; border-radius: 9999px; background: radial-gradient(closest-side at var(--spotlight-x, 50%) var(--spotlight-y, 50%), oklch(0.9 0.12 210 / 55%), oklch(0.74 0.16 300 / 25%) 55%, transparent 100%); opacity: 0; transition: opacity var(--duration-brand) ease-out; pointer-events: none; }
+.brand-logo[data-spotlight=active] .brand-mark::after, .brand-logo:focus-visible .brand-mark::after { opacity: 1; }
+.brand-logo:hover .brand-mark::before, .brand-logo:focus-visible .brand-mark::before { opacity: 0.7; }
 .hero { position: relative; height: 700px; min-height: 630px; overflow: hidden; }
 .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-artwork { object-position: center 35%; }
