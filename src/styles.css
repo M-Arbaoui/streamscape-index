@@ -170,8 +170,8 @@
   --hero-overlay-mobile: linear-gradient(90deg, oklch(0.08 0.015 285 / 85%), oklch(0.08 0.015 285 / 35%));
   --card-overlay: linear-gradient(0deg, oklch(0.1 0.02 285 / 97%), oklch(0.1 0.02 285 / 4%) 85%);
   --shadow-cinematic: 0 18px 36px -10px oklch(0 0 0 / 65%), 0 0 0 1px oklch(0.74 0.15 300 / 30%), 0 0 28px -6px oklch(0.74 0.15 300 / 22%);
-  --shadow-champagne: 0 4px 18px -5px oklch(0.74 0.15 300 / 30%), 0 0 22px -6px oklch(0.85 0.13 200 / 22%);
-  --button-champagne: linear-gradient(135deg, oklch(0.78 0.16 300), oklch(0.72 0.13 230) 55%, oklch(0.85 0.13 200));
+  --shadow-aura: 0 4px 18px -5px oklch(0.74 0.15 300 / 30%), 0 0 22px -6px oklch(0.85 0.13 200 / 22%);
+  --button-aura: linear-gradient(135deg, oklch(0.78 0.16 300), oklch(0.72 0.13 230) 55%, oklch(0.85 0.13 200));
   --surface-sheen: linear-gradient(135deg, oklch(0.95 0.02 280 / 6%), transparent 65%);
   --duration-fast: 180ms;
   --duration-cinematic: 600ms;
@@ -213,8 +213,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-title { font-family: var(--font-display); font-size: 80px; line-height: 1.1; font-weight: 500; }
 .hero-subtitle { font-size: 16px; font-weight: 500; margin-top: 12px; color: var(--primary); }
 main h1:not(.hero-title), main h2, [data-slot="dialog-title"] { font-family: var(--font-display); font-weight: 500; }
-.champagne-button { background-image: var(--button-champagne); box-shadow: var(--shadow-champagne); }
-.champagne-button:hover { filter: brightness(1.06); }
+.aura-button { background-image: var(--button-aura); box-shadow: var(--shadow-aura); }
+.aura-button:hover { filter: brightness(1.06); }
 .glass-control { background-image: var(--surface-sheen); backdrop-filter: blur(12px); }
 .film-row { scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding-inline: 4.6%; }
 .film-row::-webkit-scrollbar { display: none; }
@@ -228,12 +228,12 @@ main h1:not(.hero-title), main h2, [data-slot="dialog-title"] { font-family: var
 .featured-dot[data-active=true] { transform: scaleX(1); background: var(--primary); }
 .cinematic-image-content { opacity: 0; transition: opacity var(--duration-reveal) ease-out, transform var(--duration-cinematic) var(--ease-cinematic); }
 .cinematic-image[data-image-state=ready] .cinematic-image-content { opacity: 1; }
-.cinematic-skeleton { background-color: var(--muted); background-image: var(--loading-sheen); background-size: 250% 100%; animation: champagne-shimmer 2.2s ease-in-out infinite; }
+.cinematic-skeleton { background-color: var(--muted); background-image: var(--loading-sheen); background-size: 250% 100%; animation: aura-shimmer 2.2s ease-in-out infinite; }
 .navigation-loading { overflow: hidden; background: var(--border); }
 .navigation-loading::after { content: ''; display: block; width: 40%; height: 100%; background: var(--loading-track); animation: navigation-progress 1.6s ease-in-out infinite; }
 .catalog-transition { animation: cinematic-reveal var(--duration-reveal) ease-out; }
 .cinematic-dialog[data-state=open], .cinematic-dialog[data-state=closed], .cinematic-dialog-overlay[data-state=open], .cinematic-dialog-overlay[data-state=closed] { animation-duration: var(--duration-reveal); animation-timing-function: var(--ease-cinematic); }
-@keyframes champagne-shimmer { from { background-position: 150% 0; } to { background-position: -150% 0; } }
+@keyframes aura-shimmer { from { background-position: 150% 0; } to { background-position: -150% 0; } }
 @keyframes navigation-progress { from { transform: translateX(-100%); } to { transform: translateX(350%); } }
 @keyframes cinematic-reveal { from { opacity: .65; } to { opacity: 1; } }
 @keyframes copy-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
