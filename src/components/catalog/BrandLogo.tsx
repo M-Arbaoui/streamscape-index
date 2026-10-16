@@ -6,8 +6,8 @@ export function BrandLogo() {
   useEffect(() => {
     const logo = logoRef.current;
     if (!logo) return;
-    const wordmark = logo.querySelector<HTMLElement>('.brand-wordmark');
-    if (!wordmark) return;
+    const targets = logo.querySelectorAll<HTMLElement>('.brand-wordmark, .brand-mark');
+    if (!targets.length) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame: number | undefined;
     let x = 0;
@@ -19,13 +19,15 @@ export function BrandLogo() {
     };
     const track = (event: PointerEvent) => {
       if (reducedMotion.matches || event.pointerType === 'touch') return;
-      const bounds = wordmark.getBoundingClientRect();
-      x = event.clientX - bounds.left;
-      y = event.clientY - bounds.top;
       if (frame !== undefined) return;
+      x = event.clientX;
+      y = event.clientY;
       frame = requestAnimationFrame(() => {
-        wordmark.style.setProperty('--spotlight-x', `${x}px`);
-        wordmark.style.setProperty('--spotlight-y', `${y}px`);
+        for (const target of targets) {
+          const bounds = target.getBoundingClientRect();
+          target.style.setProperty('--spotlight-x', `${x - bounds.left}px`);
+          target.style.setProperty('--spotlight-y', `${y - bounds.top}px`);
+        }
         logo.dataset['spotlight'] = 'active';
         frame = undefined;
       });
@@ -44,7 +46,20 @@ export function BrandLogo() {
       reducedMotion.removeEventListener('change', reset);
     };
   }, []);
-  return <Link ref={logoRef} to="/" aria-label="Watchy home" className="brand-logo relative flex shrink-0 items-center rounded-sm py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background">
-    <span className="brand-wordmark relative leading-none" data-wordmark="Watchy.">Watchy<span className="logo-dot" aria-hidden="true">.</span></span>
+  return <Link ref={logoRef} to="/" aria-label="Aura home" className="brand-logo relative flex shrink-0 items-center gap-2.5 rounded-sm py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background">
+    <span className="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+        <defs>
+          <linearGradient id="aura-lens" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="oklch(0.78 0.16 300)" />
+            <stop offset="1" stopColor="oklch(0.88 0.13 200)" />
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="12.5" stroke="url(#aura-lens)" strokeWidth="1.6" />
+        <path d="M16 7.5 L22.8 20.5 L9.2 20.5 Z" stroke="url(#aura-lens)" strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+        <circle cx="16" cy="16" r="2.1" fill="url(#aura-lens)" />
+      </svg>
+    </span>
+    <span className="brand-wordmark relative leading-none" data-wordmark="Aura">Aura</span>
   </Link>;
 }
